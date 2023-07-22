@@ -40,7 +40,9 @@ export async function getStaticPaths() {
     // fallback: false,
     // true := meaning that paths does not contain all supported values
     // fallback: true,
-    fallback: false,
+    // 'blocking' means that there might be some new paths
+    // so it will not generate 404, in case new meetups are added
+    fallback: "blocking",
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
